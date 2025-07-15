@@ -1,0 +1,5 @@
+com/microservice/customerservice/controller/CustomerController.class
+com/microservice/customerservice/service/CustomerService.class
+com/microservice/customerservice/entity/Customer.class
+com/microservice/customerservice/CustomerServiceApplication.class
+com/microservice/customerservice/repository/CustomerRepository.class

@@ -1,0 +1,47 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: redis-shedlock-demo
+  
+  # Redis Configuration
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 2000ms
+      database: ${REDIS_DATABASE:0}
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          max-wait: -1ms
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,scheduledtasks,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# Logging Configuration
+logging:
+  level:
+    com.distributed: DEBUG
+    net.javacrumbs.shedlock: DEBUG
+    org.springframework.scheduling: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%X{instanceId}] %logger{36} - %msg%n"
+    
+# Custom application properties
+app:
+  instance:
+    id: ${INSTANCE_ID:instance-1}
+  scheduling:
+    enabled: true 
